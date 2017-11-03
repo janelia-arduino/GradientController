@@ -42,13 +42,24 @@ public:
   GradientController();
   virtual void setup();
 
+  void startGradient();
+  void stopGradient();
+
+  Ratio concentrationToRatio(const double concentration);
+
 private:
   modular_server::Property properties_[gradient_controller::constants::PROPERTY_COUNT_MAX];
   modular_server::Parameter parameters_[gradient_controller::constants::PARAMETER_COUNT_MAX];
   modular_server::Function functions_[gradient_controller::constants::FUNCTION_COUNT_MAX];
   modular_server::Callback callbacks_[gradient_controller::constants::CALLBACK_COUNT_MAX];
 
+  gradient_controller::constants::GradientInfo gradient_info_;
+
   // Handlers
+  void updateRampTimingHandler();
+  void startGradientHandler(modular_server::Interrupt * interrupt_ptr);
+  void stopGradientHandler(modular_server::Interrupt * interrupt_ptr);
+  void setConcentrationHandler(int index);
 
 };
 
