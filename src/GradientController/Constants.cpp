@@ -63,13 +63,13 @@ CONSTANT_STRING(pre_ramp_duration_property_name,"preRampDuration");
 const double pre_ramp_duration_default = 1.5;
 
 CONSTANT_STRING(ramp_duration_property_name,"rampDuration");
-const double ramp_duration_default = 17.5;
+const double ramp_duration_default = 18.0;
 
 CONSTANT_STRING(post_ramp_concentration_property_name,"postRampConcentration");
 const double post_ramp_concentration_default = 95;
 
 CONSTANT_STRING(post_ramp_duration_property_name,"postRampDuration");
-const double post_ramp_duration_default = 1.5;
+const double post_ramp_duration_default = 1.0;
 
 CONSTANT_STRING(final_concentration_property_name,"finalConcentration");
 const double final_concentration_default = 10;
@@ -83,6 +83,7 @@ const bool test_gradient_default = false;
 // Parameters
 
 // Functions
+CONSTANT_STRING(get_ramp_timing_function_name,"getRampTiming");
 
 // Callbacks
 CONSTANT_STRING(start_gradient_callback_name,"startGradient");

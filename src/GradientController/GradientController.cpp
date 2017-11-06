@@ -81,6 +81,9 @@ void GradientController::setup()
   // Parameters
 
   // Functions
+  modular_server::Function & get_ramp_timing_function = modular_server_.createFunction(constants::get_ramp_timing_function_name);
+  get_ramp_timing_function.attachFunctor(makeFunctor((Functor0 *)0,*this,&GradientController::getRampTimingHandler));
+  get_ramp_timing_function.setResultTypeObject();
 
   // Callbacks
   modular_server::Callback & start_gradient_callback = modular_server_.createCallback(constants::start_gradient_callback_name);
@@ -104,6 +107,7 @@ void GradientController::stopGradient()
 {
   gradient_info_.state_ptr = &constants::state_gradient_not_started_string;
   event_controller_.remove(gradient_info_.event_id);
+  gradient_info_.concentration = 0.0;
   stopMixing();
 }
 
@@ -139,6 +143,18 @@ void GradientController::updateRampTimingHandler()
 {
 }
 
+void GradientController::getRampTimingHandler()
+{
+  modular_server_.response().writeResultKey();
+
+  modular_server_.response().beginObject();
+
+  // modular_server_.response().write(constants::mixing_volume_fill_duration_string,mixing_volume_fill_duration_);
+  // modular_server_.response().write(constants::valve_open_duration_min_string,valve_open_duration_min_);
+
+  modular_server_.response().endObject();
+}
+
 void GradientController::startGradientHandler(modular_server::Interrupt * interrupt_ptr)
 {
   startGradient();
@@ -161,12 +177,14 @@ void GradientController::setConcentrationHandler(int index)
     {
       gradient_info_.state_ptr = &constants::state_pre_ramp_string;
       modular_server_.property(constants::pre_ramp_concentration_property_name).getValue(concentration);
+      gradient_info_.concentration = concentration;
       modular_server_.property(constants::pre_ramp_duration_property_name).getValue(duration);
     }
     else if (state_ptr == &constants::state_pre_ramp_string)
     {
       // gradient_info_.state_ptr = &constants::state_ramp_string;
       modular_server_.property(constants::pre_ramp_concentration_property_name).getValue(concentration);
+      gradient_info_.concentration = concentration;
       duration = 10;
     }
 

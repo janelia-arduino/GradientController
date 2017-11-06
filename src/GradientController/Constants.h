@@ -36,6 +36,7 @@ struct GradientInfo
 {
   const ConstantString * state_ptr;
   EventId event_id;
+  double concentration;
 };
 
 extern ConstantString state_string;
@@ -92,6 +93,7 @@ extern const bool test_gradient_default;
 // Parameters
 
 // Functions
+extern ConstantString get_ramp_timing_function_name;
 
 // Callbacks
 extern ConstantString start_gradient_callback_name;

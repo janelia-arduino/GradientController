@@ -57,6 +57,7 @@ private:
 
   // Handlers
   void updateRampTimingHandler();
+  void getRampTimingHandler();
   void startGradientHandler(modular_server::Interrupt * interrupt_ptr);
   void stopGradientHandler(modular_server::Interrupt * interrupt_ptr);
   void setConcentrationHandler(int index);
