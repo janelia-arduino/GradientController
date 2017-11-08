@@ -21,6 +21,9 @@ enum{PARAMETER_COUNT_MAX=1};
 enum{FUNCTION_COUNT_MAX=1};
 enum{CALLBACK_COUNT_MAX=2};
 
+enum{GRADIENT_ARG_STARTED=-1};
+enum{GRADIENT_ARG_NORMAL=-1};
+
 extern ConstantString device_name;
 
 extern ConstantString firmware_name;
@@ -35,8 +38,9 @@ extern const double duration_max;
 struct GradientInfo
 {
   const ConstantString * state_ptr;
-  EventId event_id;
   double concentration;
+  size_t count;
+  size_t inc;
 };
 
 extern ConstantString state_string;
@@ -50,21 +54,15 @@ extern ConstantString state_finished_string;
 // Interrupts
 
 // Units
-extern ConstantString percent_units;
 extern ConstantString minute_units;
 
 // Properties
 // Property values must be long, double, bool, long[], double[], bool[], char[], ConstantString *, (ConstantString *)[]
 extern const long valve_count;
 
-extern const long mix_resolution_min;
-extern const long mix_resolution_max;
-extern const long mix_resolution_default;
+extern const long mix_resolution;
 
-extern ConstantString ramp_resolution_property_name;
-extern const long ramp_resolution_min;
-extern const long ramp_resolution_max;
-extern const long ramp_resolution_default;
+extern const long mix_duration;
 
 extern ConstantString pre_ramp_concentration_property_name;
 extern const double pre_ramp_concentration_default;
@@ -74,6 +72,11 @@ extern const double pre_ramp_duration_default;
 
 extern ConstantString ramp_duration_property_name;
 extern const double ramp_duration_default;
+
+extern ConstantString ramp_concentration_increment_property_name;
+extern const double ramp_concentration_increment_min;
+extern const double ramp_concentration_increment_max;
+extern const double ramp_concentration_increment_default;
 
 extern ConstantString post_ramp_concentration_property_name;
 extern const double post_ramp_concentration_default;

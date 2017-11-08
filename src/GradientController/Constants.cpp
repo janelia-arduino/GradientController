@@ -41,20 +41,14 @@ CONSTANT_STRING(state_finished_string,"FINISHED");
 // Interrupts
 
 // Units
-CONSTANT_STRING(percent_units,"%");
 CONSTANT_STRING(minute_units,"min");
 
 // Properties
 const long valve_count = 2;
 
-const long mix_resolution_min = 100;
-const long mix_resolution_max = 1000;
-const long mix_resolution_default = 200;
+const long mix_resolution = 100;
 
-CONSTANT_STRING(ramp_resolution_property_name,"rampResolution");
-const long ramp_resolution_min = 10;
-const long ramp_resolution_max = 1000;
-const long ramp_resolution_default = 100;
+const long mix_duration = 6000;
 
 CONSTANT_STRING(pre_ramp_concentration_property_name,"preRampConcentration");
 const double pre_ramp_concentration_default = 10;
@@ -64,6 +58,11 @@ const double pre_ramp_duration_default = 1.5;
 
 CONSTANT_STRING(ramp_duration_property_name,"rampDuration");
 const double ramp_duration_default = 18.0;
+
+CONSTANT_STRING(ramp_concentration_increment_property_name,"rampConcentrationIncrement");
+const double ramp_concentration_increment_min = 1.0;
+const double ramp_concentration_increment_max = 1.0;
+const double ramp_concentration_increment_default = 1.0;
 
 CONSTANT_STRING(post_ramp_concentration_property_name,"postRampConcentration");
 const double post_ramp_concentration_default = 95;
