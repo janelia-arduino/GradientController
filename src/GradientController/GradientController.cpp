@@ -132,6 +132,7 @@ bool GradientController::finishMix()
   bool continue_mixing = true;
   if (gradient_info_.inc < gradient_info_.count)
   {
+    Serial << "inc = " << gradient_info_.inc << "\n";
     ++gradient_info_.inc;
   }
   else
@@ -184,47 +185,68 @@ void GradientController::stopGradientHandler(modular_server::Interrupt * interru
 
 void GradientController::setConcentrationHandler(int index)
 {
-  double concentration = 0;
-  double duration = 0;
-  long mix_duration = 1;
-  long duration_ms = 0;
+  bool test_gradient;
+  modular_server_.property(constants::test_gradient_property_name).getValue(test_gradient);
 
   const ConstantString * & state_ptr = gradient_info_.state_ptr;
   if (state_ptr == &constants::state_gradient_not_started_string)
   {
     gradient_info_.state_ptr = &constants::state_pre_ramp_string;
+
+    double concentration;
     modular_server_.property(constants::pre_ramp_concentration_property_name).getValue(concentration);
     gradient_info_.concentration = concentration;
-    modular_server_.property(constants::pre_ramp_duration_property_name).getValue(duration);
-    duration_ms = duration*mixing_valve_controller::constants::seconds_per_minute*mixing_valve_controller::constants::milliseconds_per_second;
+
+    double state_duration;
+    modular_server_.property(constants::pre_ramp_duration_property_name).getValue(state_duration);
+    long state_duration_ms = state_duration*mixing_valve_controller::constants::seconds_per_minute*mixing_valve_controller::constants::milliseconds_per_second;
+
+    long mix_duration;
     modular_server_.property(mixing_valve_controller::constants::mix_duration_property_name).setValue(constants::mix_duration);
     modular_server_.property(mixing_valve_controller::constants::mix_duration_property_name).getValue(mix_duration);
+
+    gradient_info_.count = state_duration_ms/mix_duration;
+    gradient_info_.inc = 1;
+
   }
   else if (state_ptr == &constants::state_pre_ramp_string)
   {
-    // gradient_info_.state_ptr = &constants::state_ramp_string;
-    modular_server_.property(constants::pre_ramp_concentration_property_name).getValue(concentration);
-    gradient_info_.concentration = concentration;
-    modular_server_.property(constants::pre_ramp_duration_property_name).getValue(duration);
-    double post_ramp_concentration;
-    modular_server_.property(constants::pre_ramp_concentration_property_name).getValue(post_ramp_concentration);
-    double ramp_concentration_increment;
-    modular_server_.property(constants::ramp_concentration_increment_property_name).getValue(ramp_concentration_increment);
-    duration = (duration*ramp_concentration_increment)/(post_ramp_concentration - concentration);
-    duration_ms = duration*mixing_valve_controller::constants::seconds_per_minute*mixing_valve_controller::constants::milliseconds_per_second;
+    gradient_info_.state_ptr = &constants::state_ramp_string;
+
+    double concentration_min;
+    modular_server_.property(constants::pre_ramp_concentration_property_name).getValue(concentration_min);
+
+    double concentration_max;
+    modular_server_.property(constants::post_ramp_concentration_property_name).getValue(concentration_max);
+
+    double concentration_delta = concentration_max - concentration_min;
+
+    double state_duration;
+    modular_server_.property(constants::ramp_duration_property_name).getValue(state_duration);
+    long state_duration_ms = state_duration*mixing_valve_controller::constants::seconds_per_minute*mixing_valve_controller::constants::milliseconds_per_second;
+
+    double concentration_increment;
+    modular_server_.property(constants::ramp_concentration_increment_property_name).getValue(concentration_increment);
+
+    double state_duration_increment = (state_duration/concentration_delta)*concentration_increment;
+
+    long state_duration_increment_ms = state_duration_increment*mixing_valve_controller::constants::seconds_per_minute*mixing_valve_controller::constants::milliseconds_per_second;
+
+    long mix_duration = state_duration_increment_ms;
+    modular_server_.property(mixing_valve_controller::constants::mix_duration_property_name).setValue(mix_duration);
+    modular_server_.property(mixing_valve_controller::constants::mix_duration_property_name).getValue(mix_duration);
+
+    gradient_info_.count = state_duration_ms/mix_duration;
+    gradient_info_.inc = 1;
+
+  }
+  else
+  {
+    stopGradient();
+    return;
   }
 
-  bool test_gradient;
-  modular_server_.property(constants::test_gradient_property_name).getValue(test_gradient);
-
-  Ratio mix_ratio = concentrationToRatio(concentration);
-
-  gradient_info_.count = duration_ms/mix_duration;
-  gradient_info_.inc = 1;
-
-  Serial << "concentration = " << concentration << ", mix_ratio = " << mix_ratio << "\n";
-  Serial << "duration = " << duration << ", duration_ms = " << duration_ms << "\n";
-  Serial << "count = " << gradient_info_.count << "\n";
+  Ratio mix_ratio = concentrationToRatio(gradient_info_.concentration);
 
   startMixing(mix_ratio);
 }
