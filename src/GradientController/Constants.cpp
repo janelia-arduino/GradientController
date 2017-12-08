@@ -82,7 +82,7 @@ const bool test_gradient_default = false;
 // Parameters
 
 // Functions
-CONSTANT_STRING(get_ramp_timing_function_name,"getRampTiming");
+CONSTANT_STRING(get_ramp_timing_function_name,"getRampInfo");
 
 // Callbacks
 CONSTANT_STRING(start_gradient_callback_name,"startGradient");

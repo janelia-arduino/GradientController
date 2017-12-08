@@ -60,8 +60,8 @@ private:
   gradient_controller::constants::GradientInfo gradient_info_;
 
   // Handlers
-  void updateRampTimingHandler();
-  void getRampTimingHandler();
+  void updateRampPropertiesHandler();
+  void getRampInfoHandler();
   void startGradientHandler(modular_server::Interrupt * interrupt_ptr);
   void stopGradientHandler(modular_server::Interrupt * interrupt_ptr);
   void setConcentrationHandler(int index);
