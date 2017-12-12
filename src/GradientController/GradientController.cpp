@@ -270,8 +270,8 @@ void GradientController::setConcentrationHandler(int index)
       Serial << "mix_duration = " << mix_duration << "\n";
 
       gradient_info_.count = state_duration_ms/mix_duration;
-      gradient_info_.inc = 1;
     }
+    gradient_info_.inc = 1;
   }
   else if (state_ptr == &constants::state_post_ramp_string)
   {
