@@ -51,6 +51,10 @@ void GradientController::setup()
   modular_server::Property & mix_duration_property = modular_server_.property(mixing_valve_controller::constants::mix_duration_property_name);
   mix_duration_property.setDefaultValue(constants::mix_duration);
 
+  modular_server::Property & valve_open_unit_duration_min_property = modular_server_.property(mixing_valve_controller::constants::valve_open_unit_duration_min_property_name);
+  valve_open_unit_duration_min_property.setDefaultValue(constants::valve_open_unit_duration_min);
+  valve_open_unit_duration_min_property.setRange(constants::valve_open_unit_duration_min,constants::valve_open_unit_duration_min);
+
   modular_server::Property & pre_ramp_concentration_property = modular_server_.createProperty(constants::pre_ramp_concentration_property_name,constants::pre_ramp_concentration_default);
   pre_ramp_concentration_property.setUnits(mixing_valve_controller::constants::percent_units);
   pre_ramp_concentration_property.setRange(constants::concentration_min,constants::concentration_max);
@@ -198,7 +202,7 @@ void GradientController::setConcentrationHandler(int index)
   {
     gradient_info_.state_ptr = &constants::state_pre_ramp_string;
 
-    double concentration;
+    long concentration;
     modular_server_.property(constants::pre_ramp_concentration_property_name).getValue(concentration);
     gradient_info_.concentration = concentration;
 
@@ -218,18 +222,18 @@ void GradientController::setConcentrationHandler(int index)
   {
     gradient_info_.state_ptr = &constants::state_ramp_string;
 
-    double concentration_min;
+    long concentration_min;
     modular_server_.property(constants::pre_ramp_concentration_property_name).getValue(concentration_min);
 
-    double concentration_max;
+    long concentration_max;
     modular_server_.property(constants::post_ramp_concentration_property_name).getValue(concentration_max);
 
-    double concentration_delta = concentration_max - concentration_min;
+    long concentration_delta = concentration_max - concentration_min;
 
     double state_duration;
     modular_server_.property(constants::ramp_duration_property_name).getValue(state_duration);
 
-    double concentration_increment;
+    long concentration_increment;
     modular_server_.property(constants::ramp_concentration_increment_property_name).getValue(concentration_increment);
 
     double state_duration_increment = (state_duration/concentration_delta)*concentration_increment;
@@ -241,17 +245,19 @@ void GradientController::setConcentrationHandler(int index)
     modular_server_.property(mixing_valve_controller::constants::mix_duration_property_name).getValue(mix_duration);
     Serial << "mix_duration = " << mix_duration << "\n";
 
+    // Add half of the increment to use segment midpoint instead of segment left most point to determine segment value
+    gradient_info_.concentration = concentration_min + (double)concentration_increment/2;
     gradient_info_.count = state_duration_increment_ms/mix_duration;
     gradient_info_.inc = 1;
   }
   else if (state_ptr == &constants::state_ramp_string)
   {
-    double concentration_increment;
+    long concentration_increment;
     modular_server_.property(constants::ramp_concentration_increment_property_name).getValue(concentration_increment);
 
     gradient_info_.concentration += concentration_increment;
 
-    double post_ramp_concentration;
+    long post_ramp_concentration;
     modular_server_.property(constants::post_ramp_concentration_property_name).getValue(post_ramp_concentration);
 
     if (gradient_info_.concentration > post_ramp_concentration)
@@ -277,7 +283,7 @@ void GradientController::setConcentrationHandler(int index)
   {
     gradient_info_.state_ptr = &constants::state_final_string;
 
-    double concentration;
+    long concentration;
     modular_server_.property(constants::final_concentration_property_name).getValue(concentration);
     gradient_info_.concentration = concentration;
 

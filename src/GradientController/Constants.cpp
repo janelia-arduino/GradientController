@@ -24,8 +24,8 @@ const modular_server::FirmwareInfo firmware_info =
     .version_patch=1,
   };
 
-const double concentration_min = 0.0;
-const double concentration_max = 100.0;
+const long concentration_min = 0;
+const long concentration_max = 100;
 
 const double duration_min = 0.0;
 const double duration_max = 100.0;
@@ -46,12 +46,14 @@ CONSTANT_STRING(minute_units,"min");
 // Properties
 const long valve_count = 2;
 
-const long mix_resolution = 100;
+const long mix_resolution = 200;
 
 const long mix_duration = 6000;
 
+const long valve_open_unit_duration_min = 25;
+
 CONSTANT_STRING(pre_ramp_concentration_property_name,"preRampConcentration");
-const double pre_ramp_concentration_default = 10;
+const long pre_ramp_concentration_default = 10;
 
 CONSTANT_STRING(pre_ramp_duration_property_name,"preRampDuration");
 const double pre_ramp_duration_default = 1.5;
@@ -60,18 +62,18 @@ CONSTANT_STRING(ramp_duration_property_name,"rampDuration");
 const double ramp_duration_default = 18.0;
 
 CONSTANT_STRING(ramp_concentration_increment_property_name,"rampConcentrationIncrement");
-const double ramp_concentration_increment_min = 1.0;
-const double ramp_concentration_increment_max = 1.0;
-const double ramp_concentration_increment_default = 1.0;
+const long ramp_concentration_increment_min = 1;
+const long ramp_concentration_increment_max = 4;
+const long ramp_concentration_increment_default = 1;
 
 CONSTANT_STRING(post_ramp_concentration_property_name,"postRampConcentration");
-const double post_ramp_concentration_default = 95;
+const long post_ramp_concentration_default = 95;
 
 CONSTANT_STRING(post_ramp_duration_property_name,"postRampDuration");
 const double post_ramp_duration_default = 1.0;
 
 CONSTANT_STRING(final_concentration_property_name,"finalConcentration");
-const double final_concentration_default = 10;
+const long final_concentration_default = 10;
 
 CONSTANT_STRING(final_duration_property_name,"finalDuration");
 const double final_duration_default = 2.5;

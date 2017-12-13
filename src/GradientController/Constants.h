@@ -29,8 +29,8 @@ extern ConstantString device_name;
 extern ConstantString firmware_name;
 extern const modular_server::FirmwareInfo firmware_info;
 
-extern const double concentration_min;
-extern const double concentration_max;
+extern const long concentration_min;
+extern const long concentration_max;
 
 extern const double duration_min;
 extern const double duration_max;
@@ -64,8 +64,10 @@ extern const long mix_resolution;
 
 extern const long mix_duration;
 
+extern const long valve_open_unit_duration_min;
+
 extern ConstantString pre_ramp_concentration_property_name;
-extern const double pre_ramp_concentration_default;
+extern const long pre_ramp_concentration_default;
 
 extern ConstantString pre_ramp_duration_property_name;
 extern const double pre_ramp_duration_default;
@@ -74,18 +76,18 @@ extern ConstantString ramp_duration_property_name;
 extern const double ramp_duration_default;
 
 extern ConstantString ramp_concentration_increment_property_name;
-extern const double ramp_concentration_increment_min;
-extern const double ramp_concentration_increment_max;
-extern const double ramp_concentration_increment_default;
+extern const long ramp_concentration_increment_min;
+extern const long ramp_concentration_increment_max;
+extern const long ramp_concentration_increment_default;
 
 extern ConstantString post_ramp_concentration_property_name;
-extern const double post_ramp_concentration_default;
+extern const long post_ramp_concentration_default;
 
 extern ConstantString post_ramp_duration_property_name;
 extern const double post_ramp_duration_default;
 
 extern ConstantString final_concentration_property_name;
-extern const double final_concentration_default;
+extern const long final_concentration_default;
 
 extern ConstantString final_duration_property_name;
 extern const double final_duration_default;
