@@ -64,8 +64,6 @@ extern const long mix_resolution;
 
 extern const long mix_duration;
 
-extern const long valve_open_unit_duration_min;
-
 extern ConstantString pre_ramp_concentration_property_name;
 extern const long pre_ramp_concentration_default;
 

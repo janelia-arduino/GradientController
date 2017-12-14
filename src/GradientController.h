@@ -46,7 +46,7 @@ public:
   void startGradient();
   void stopGradient();
 
-  Ratio concentrationToRatio(const double concentration);
+  ValveValues concentrationToRatio(const double concentration);
 
 protected:
   virtual bool finishMix();

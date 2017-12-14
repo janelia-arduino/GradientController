@@ -50,8 +50,6 @@ const long mix_resolution = 200;
 
 const long mix_duration = 6000;
 
-const long valve_open_unit_duration_min = 25;
-
 CONSTANT_STRING(pre_ramp_concentration_property_name,"preRampConcentration");
 const long pre_ramp_concentration_default = 10;
 
