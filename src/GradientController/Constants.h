@@ -51,7 +51,7 @@ extern ConstantString state_post_ramp_string;
 extern ConstantString state_final_string;
 extern ConstantString state_finished_string;
 
-// Interrupts
+// Pins
 
 // Units
 extern ConstantString minute_units;

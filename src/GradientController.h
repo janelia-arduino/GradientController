@@ -47,8 +47,8 @@ private:
   // Handlers
   void updateRampPropertiesHandler();
   void getRampInfoHandler();
-  void startGradientHandler(modular_server::Interrupt * interrupt_ptr);
-  void stopGradientHandler(modular_server::Interrupt * interrupt_ptr);
+  void startGradientHandler(modular_server::Pin * pin_ptr);
+  void stopGradientHandler(modular_server::Pin * pin_ptr);
   void setConcentrationHandler(int index);
 
 };

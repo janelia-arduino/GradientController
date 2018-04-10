@@ -30,7 +30,7 @@ void GradientController::setup()
 
   // Add Hardware
 
-  // Interrupts
+  // Pins
 
   // Add Firmware
   modular_server_.addFirmware(constants::firmware_info,
@@ -98,13 +98,13 @@ void GradientController::setup()
 
   // Callbacks
   modular_server::Callback & start_gradient_callback = modular_server_.createCallback(constants::start_gradient_callback_name);
-  start_gradient_callback.attachFunctor(makeFunctor((Functor1<modular_server::Interrupt *> *)0,*this,&GradientController::startGradientHandler));
+  start_gradient_callback.attachFunctor(makeFunctor((Functor1<modular_server::Pin *> *)0,*this,&GradientController::startGradientHandler));
 #if !defined(__AVR_ATmega2560__)
-  start_gradient_callback.attachTo(modular_device_base::constants::btn_a_interrupt_name,modular_server::interrupt::mode_falling);
+  start_gradient_callback.attachTo(modular_device_base::constants::btn_a_pin_name,modular_server::pin::mode_falling);
 #endif
 
   modular_server::Callback & stop_gradient_callback = modular_server_.createCallback(constants::stop_gradient_callback_name);
-  stop_gradient_callback.attachFunctor(makeFunctor((Functor1<modular_server::Interrupt *> *)0,*this,&GradientController::stopGradientHandler));
+  stop_gradient_callback.attachFunctor(makeFunctor((Functor1<modular_server::Pin *> *)0,*this,&GradientController::stopGradientHandler));
 
 }
 
@@ -179,12 +179,12 @@ void GradientController::getRampInfoHandler()
   modular_server_.response().endObject();
 }
 
-void GradientController::startGradientHandler(modular_server::Interrupt * interrupt_ptr)
+void GradientController::startGradientHandler(modular_server::Pin * pin_ptr)
 {
   startGradient();
 }
 
-void GradientController::stopGradientHandler(modular_server::Interrupt * interrupt_ptr)
+void GradientController::stopGradientHandler(modular_server::Pin * pin_ptr)
 {
   stopGradient();
 }

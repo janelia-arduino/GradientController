@@ -38,7 +38,7 @@ CONSTANT_STRING(state_post_ramp_string,"POST_RAMP");
 CONSTANT_STRING(state_final_string,"FINAL");
 CONSTANT_STRING(state_finished_string,"FINISHED");
 
-// Interrupts
+// Pins
 
 // Units
 CONSTANT_STRING(minute_units,"min");
