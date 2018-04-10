@@ -2,11 +2,11 @@
 
 Authors:
 
-    Peter Polidoro <polidorop@janelia.hhmi.org>
+Peter Polidoro <polidorop@janelia.hhmi.org>
 
 License:
 
-    BSD
+BSD
 
 ## Ancestors
 
@@ -27,6 +27,33 @@ License:
 ## API NAMES
 
 ```json
+{
+  "id": "getApi",
+  "result": {
+    "firmware": [
+      "GradientController"
+    ],
+    "verbosity": "NAMES",
+    "functions": [
+      "getRampInfo"
+    ],
+    "properties": [
+      "preRampConcentration",
+      "preRampDuration",
+      "rampDuration",
+      "rampConcentrationIncrement",
+      "postRampConcentration",
+      "postRampDuration",
+      "finalConcentration",
+      "finalDuration",
+      "testGradient"
+    ],
+    "callbacks": [
+      "startGradient",
+      "stopGradient"
+    ]
+  }
+}
 ```
 
 ## API GENERAL

@@ -99,9 +99,7 @@ void GradientController::setup()
   // Callbacks
   modular_server::Callback & start_gradient_callback = modular_server_.createCallback(constants::start_gradient_callback_name);
   start_gradient_callback.attachFunctor(makeFunctor((Functor1<modular_server::Pin *> *)0,*this,&GradientController::startGradientHandler));
-#if !defined(__AVR_ATmega2560__)
-  start_gradient_callback.attachTo(modular_device_base::constants::btn_a_pin_name,modular_server::pin::mode_falling);
-#endif
+  start_gradient_callback.attachTo(modular_device_base::constants::btn_a_pin_name,modular_server::constants::pin_mode_interrupt_falling);
 
   modular_server::Callback & stop_gradient_callback = modular_server_.createCallback(constants::stop_gradient_callback_name);
   stop_gradient_callback.attachFunctor(makeFunctor((Functor1<modular_server::Pin *> *)0,*this,&GradientController::stopGradientHandler));
