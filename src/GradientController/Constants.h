@@ -3,7 +3,7 @@
 //
 //
 // Authors:
-// Peter Polidoro polidorop@janelia.hhmi.org
+// Peter Polidoro peterpolidoro@gmail.com
 // ----------------------------------------------------------------------------
 #ifndef GRADIENT_CONTROLLER_CONSTANTS_H
 #define GRADIENT_CONTROLLER_CONSTANTS_H
