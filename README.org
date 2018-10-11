@@ -4,7 +4,7 @@
 
 * Library Information
   - Name :: GradientController
-  - Version :: 2.0.0
+  - Version :: 2.1.0
   - License :: BSD
   - URL :: https://github.com/janelia-arduino/GradientController
   - Author :: Peter Polidoro
@@ -17,33 +17,6 @@
 * API NAMES
 
   #+BEGIN_SRC js
-    {
-      "id": "getApi",
-      "result": {
-        "firmware": [
-          "GradientController"
-        ],
-        "verbosity": "NAMES",
-        "functions": [
-          "getRampInfo"
-        ],
-        "properties": [
-          "preRampConcentration",
-          "preRampDuration",
-          "rampDuration",
-          "rampConcentrationIncrement",
-          "postRampConcentration",
-          "postRampDuration",
-          "finalConcentration",
-          "finalDuration",
-          "testGradient"
-        ],
-        "callbacks": [
-          "startGradient",
-          "stopGradient"
-        ]
-      }
-    }
   #+END_SRC
 
 * API GENERAL

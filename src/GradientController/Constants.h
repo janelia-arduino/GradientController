@@ -39,17 +39,21 @@ struct GradientInfo
 {
   const ConstantString * state_ptr;
   double concentration;
+  double state_duration;
   size_t count;
   size_t inc;
 };
 
-extern ConstantString state_string;
-extern ConstantString state_gradient_not_started_string;
-extern ConstantString state_pre_ramp_string;
-extern ConstantString state_ramp_string;
-extern ConstantString state_post_ramp_string;
-extern ConstantString state_final_string;
-extern ConstantString state_finished_string;
+extern ConstantString state_constant_string;
+extern ConstantString state_gradient_not_started_constant_string;
+extern ConstantString state_pre_ramp_constant_string;
+extern ConstantString state_ramp_constant_string;
+extern ConstantString state_post_ramp_constant_string;
+extern ConstantString state_final_constant_string;
+extern ConstantString state_finished_constant_string;
+
+extern ConstantString concentration_constant_string;
+extern ConstantString state_duration_constant_string;
 
 // Pins
 
@@ -96,7 +100,7 @@ extern const bool test_gradient_default;
 // Parameters
 
 // Functions
-extern ConstantString get_ramp_timing_function_name;
+extern ConstantString get_gradient_info_function_name;
 
 // Callbacks
 extern ConstantString start_gradient_callback_name;

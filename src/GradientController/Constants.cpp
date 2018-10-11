@@ -19,7 +19,7 @@ CONSTANT_STRING(firmware_name,"GradientController");
 const modular_server::FirmwareInfo firmware_info =
   {
     .name_ptr=&firmware_name,
-    .version_major=1,
+    .version_major=2,
     .version_minor=1,
     .version_patch=0,
   };
@@ -30,13 +30,16 @@ const long concentration_max = 100;
 const double duration_min = 0.0;
 const double duration_max = 100.0;
 
-CONSTANT_STRING(state_string,"state");
-CONSTANT_STRING(state_gradient_not_started_string,"GRADIENT_NOT_STARTED");
-CONSTANT_STRING(state_pre_ramp_string,"PRE_RAMP");
-CONSTANT_STRING(state_ramp_string,"RAMP");
-CONSTANT_STRING(state_post_ramp_string,"POST_RAMP");
-CONSTANT_STRING(state_final_string,"FINAL");
-CONSTANT_STRING(state_finished_string,"FINISHED");
+CONSTANT_STRING(state_constant_string,"state");
+CONSTANT_STRING(state_gradient_not_started_constant_string,"GRADIENT_NOT_STARTED");
+CONSTANT_STRING(state_pre_ramp_constant_string,"PRE_RAMP");
+CONSTANT_STRING(state_ramp_constant_string,"RAMP");
+CONSTANT_STRING(state_post_ramp_constant_string,"POST_RAMP");
+CONSTANT_STRING(state_final_constant_string,"FINAL");
+CONSTANT_STRING(state_finished_constant_string,"FINISHED");
+
+CONSTANT_STRING(concentration_constant_string,"concentration");
+CONSTANT_STRING(state_duration_constant_string,"state_duration");
 
 // Pins
 
@@ -82,7 +85,7 @@ const bool test_gradient_default = false;
 // Parameters
 
 // Functions
-CONSTANT_STRING(get_ramp_timing_function_name,"getRampInfo");
+CONSTANT_STRING(get_gradient_info_function_name,"getGradientInfo");
 
 // Callbacks
 CONSTANT_STRING(start_gradient_callback_name,"startGradient");
