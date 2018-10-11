@@ -300,6 +300,8 @@ void GradientController::setConcentrationHandler(int index)
   {
     gradient_info_.state_ptr = &constants::state_finished_constant_string;
     stopMixing();
+    gradient_info_.concentration = 0.0;
+    gradient_info_.state_duration = 0.0;
     return;
   }
 
