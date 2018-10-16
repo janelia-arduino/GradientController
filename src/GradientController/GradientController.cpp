@@ -35,10 +35,10 @@ void GradientController::setup()
 
   // Add Firmware
   modular_server_.addFirmware(constants::firmware_info,
-                              properties_,
-                              parameters_,
-                              functions_,
-                              callbacks_);
+    properties_,
+    parameters_,
+    functions_,
+    callbacks_);
 
   // Properties
   modular_server::Property & valve_count_property = modular_server_.property(mixing_valve_controller::constants::valve_count_property_name);
