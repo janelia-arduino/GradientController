@@ -122,7 +122,7 @@ void GradientController::stopGradient()
   stopMixing();
 }
 
-MixingValveController::ValveValues GradientController::concentrationToRatio(const double concentration)
+MixingValveController::ValveValues GradientController::concentrationToRatio(double concentration)
 {
   long mix_resolution;
   modular_server_.property(mixing_valve_controller::constants::mix_resolution_property_name).getValue(mix_resolution);
