@@ -1,0 +1,434 @@
+{
+  "id": "getApi",
+  "result": {
+    "firmware": [
+      "GradientController"
+    ],
+    "verbosity": "GENERAL",
+    "functions": [
+      {
+        "name": "getGradientInfo",
+        "result_info": {
+          "type": "object"
+        }
+      }
+    ],
+    "properties": [
+      {
+        "name": "preRampConcentration",
+        "type": "long",
+        "functions": [
+          {
+            "name": "getValue",
+            "result_info": {
+              "type": "long"
+            }
+          },
+          {
+            "name": "setValue",
+            "parameters": [
+              "value"
+            ],
+            "result_info": {
+              "type": "long"
+            }
+          },
+          {
+            "name": "getDefaultValue",
+            "result_info": {
+              "type": "long"
+            }
+          },
+          {
+            "name": "setValueToDefault",
+            "result_info": {
+              "type": "long"
+            }
+          }
+        ],
+        "parameters": [
+          {
+            "name": "value",
+            "type": "long"
+          }
+        ]
+      },
+      {
+        "name": "preRampDuration",
+        "type": "double",
+        "functions": [
+          {
+            "name": "getValue",
+            "result_info": {
+              "type": "double"
+            }
+          },
+          {
+            "name": "setValue",
+            "parameters": [
+              "value"
+            ],
+            "result_info": {
+              "type": "double"
+            }
+          },
+          {
+            "name": "getDefaultValue",
+            "result_info": {
+              "type": "double"
+            }
+          },
+          {
+            "name": "setValueToDefault",
+            "result_info": {
+              "type": "double"
+            }
+          }
+        ],
+        "parameters": [
+          {
+            "name": "value",
+            "type": "double"
+          }
+        ]
+      },
+      {
+        "name": "rampDuration",
+        "type": "double",
+        "functions": [
+          {
+            "name": "getValue",
+            "result_info": {
+              "type": "double"
+            }
+          },
+          {
+            "name": "setValue",
+            "parameters": [
+              "value"
+            ],
+            "result_info": {
+              "type": "double"
+            }
+          },
+          {
+            "name": "getDefaultValue",
+            "result_info": {
+              "type": "double"
+            }
+          },
+          {
+            "name": "setValueToDefault",
+            "result_info": {
+              "type": "double"
+            }
+          }
+        ],
+        "parameters": [
+          {
+            "name": "value",
+            "type": "double"
+          }
+        ]
+      },
+      {
+        "name": "rampConcentrationIncrement",
+        "type": "long",
+        "functions": [
+          {
+            "name": "getValue",
+            "result_info": {
+              "type": "long"
+            }
+          },
+          {
+            "name": "setValue",
+            "parameters": [
+              "value"
+            ],
+            "result_info": {
+              "type": "long"
+            }
+          },
+          {
+            "name": "getDefaultValue",
+            "result_info": {
+              "type": "long"
+            }
+          },
+          {
+            "name": "setValueToDefault",
+            "result_info": {
+              "type": "long"
+            }
+          }
+        ],
+        "parameters": [
+          {
+            "name": "value",
+            "type": "long"
+          }
+        ]
+      },
+      {
+        "name": "postRampConcentration",
+        "type": "long",
+        "functions": [
+          {
+            "name": "getValue",
+            "result_info": {
+              "type": "long"
+            }
+          },
+          {
+            "name": "setValue",
+            "parameters": [
+              "value"
+            ],
+            "result_info": {
+              "type": "long"
+            }
+          },
+          {
+            "name": "getDefaultValue",
+            "result_info": {
+              "type": "long"
+            }
+          },
+          {
+            "name": "setValueToDefault",
+            "result_info": {
+              "type": "long"
+            }
+          }
+        ],
+        "parameters": [
+          {
+            "name": "value",
+            "type": "long"
+          }
+        ]
+      },
+      {
+        "name": "postRampDuration",
+        "type": "double",
+        "functions": [
+          {
+            "name": "getValue",
+            "result_info": {
+              "type": "double"
+            }
+          },
+          {
+            "name": "setValue",
+            "parameters": [
+              "value"
+            ],
+            "result_info": {
+              "type": "double"
+            }
+          },
+          {
+            "name": "getDefaultValue",
+            "result_info": {
+              "type": "double"
+            }
+          },
+          {
+            "name": "setValueToDefault",
+            "result_info": {
+              "type": "double"
+            }
+          }
+        ],
+        "parameters": [
+          {
+            "name": "value",
+            "type": "double"
+          }
+        ]
+      },
+      {
+        "name": "finalConcentration",
+        "type": "long",
+        "functions": [
+          {
+            "name": "getValue",
+            "result_info": {
+              "type": "long"
+            }
+          },
+          {
+            "name": "setValue",
+            "parameters": [
+              "value"
+            ],
+            "result_info": {
+              "type": "long"
+            }
+          },
+          {
+            "name": "getDefaultValue",
+            "result_info": {
+              "type": "long"
+            }
+          },
+          {
+            "name": "setValueToDefault",
+            "result_info": {
+              "type": "long"
+            }
+          }
+        ],
+        "parameters": [
+          {
+            "name": "value",
+            "type": "long"
+          }
+        ]
+      },
+      {
+        "name": "finalDuration",
+        "type": "double",
+        "functions": [
+          {
+            "name": "getValue",
+            "result_info": {
+              "type": "double"
+            }
+          },
+          {
+            "name": "setValue",
+            "parameters": [
+              "value"
+            ],
+            "result_info": {
+              "type": "double"
+            }
+          },
+          {
+            "name": "getDefaultValue",
+            "result_info": {
+              "type": "double"
+            }
+          },
+          {
+            "name": "setValueToDefault",
+            "result_info": {
+              "type": "double"
+            }
+          }
+        ],
+        "parameters": [
+          {
+            "name": "value",
+            "type": "double"
+          }
+        ]
+      },
+      {
+        "name": "testGradient",
+        "type": "bool",
+        "functions": [
+          {
+            "name": "getValue",
+            "result_info": {
+              "type": "bool"
+            }
+          },
+          {
+            "name": "setValue",
+            "parameters": [
+              "value"
+            ],
+            "result_info": {
+              "type": "bool"
+            }
+          },
+          {
+            "name": "getDefaultValue",
+            "result_info": {
+              "type": "bool"
+            }
+          },
+          {
+            "name": "setValueToDefault",
+            "result_info": {
+              "type": "bool"
+            }
+          }
+        ],
+        "parameters": [
+          {
+            "name": "value",
+            "type": "bool"
+          }
+        ]
+      }
+    ],
+    "callbacks": [
+      {
+        "name": "startGradient",
+        "functions": [
+          {
+            "name": "trigger"
+          },
+          {
+            "name": "attachTo",
+            "parameters": [
+              "pin_name",
+              "pin_mode"
+            ]
+          },
+          {
+            "name": "detachFrom",
+            "parameters": [
+              "pin_name"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "pin_name",
+            "type": "string"
+          },
+          {
+            "name": "pin_mode",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "name": "stopGradient",
+        "functions": [
+          {
+            "name": "trigger"
+          },
+          {
+            "name": "attachTo",
+            "parameters": [
+              "pin_name",
+              "pin_mode"
+            ]
+          },
+          {
+            "name": "detachFrom",
+            "parameters": [
+              "pin_name"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "pin_name",
+            "type": "string"
+          },
+          {
+            "name": "pin_mode",
+            "type": "string"
+          }
+        ]
+      }
+    ]
+  }
+}

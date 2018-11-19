@@ -17,6 +17,34 @@
 * API NAMES
 
   #+BEGIN_SRC js
+    {
+      "id": "getApi",
+      "result": {
+        "firmware": [
+          "GradientController"
+        ],
+        "verbosity": "NAMES",
+        "functions": [
+          "getGradientInfo"
+        ],
+        "properties": [
+          "preRampConcentration",
+          "preRampDuration",
+          "rampDuration",
+          "rampConcentrationIncrement",
+          "postRampConcentration",
+          "postRampDuration",
+          "finalConcentration",
+          "finalDuration",
+          "testGradient"
+        ],
+        "callbacks": [
+          "startGradient",
+          "stopGradient"
+        ]
+      }
+    }
+
   #+END_SRC
 
 * API GENERAL
