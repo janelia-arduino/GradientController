@@ -36,6 +36,8 @@ public:
 protected:
   virtual bool finishMix();
 
+  void writeGradientInfoToResponse();
+
 private:
   modular_server::Property properties_[gradient_controller::constants::PROPERTY_COUNT_MAX];
   modular_server::Parameter parameters_[gradient_controller::constants::PARAMETER_COUNT_MAX];

@@ -148,6 +148,17 @@ bool GradientController::finishMix()
   return continue_mixing;
 }
 
+void GradientController::writeGradientInfoToResponse()
+{
+  modular_server_.response().beginObject();
+
+  modular_server_.response().write(constants::state_constant_string,gradient_info_.state_ptr);
+  modular_server_.response().write(constants::state_duration_constant_string,gradient_info_.state_duration);
+  modular_server_.response().write(constants::concentration_constant_string,gradient_info_.concentration);
+
+  modular_server_.response().endObject();
+}
+
 // Handlers must be non-blocking (avoid 'delay')
 //
 // modular_server_.parameter(parameter_name).getValue(value) value type must be either:
@@ -173,14 +184,7 @@ void GradientController::updateRampPropertiesHandler()
 void GradientController::getGradientInfoHandler()
 {
   modular_server_.response().writeResultKey();
-
-  modular_server_.response().beginObject();
-
-  modular_server_.response().write(constants::state_constant_string,gradient_info_.state_ptr);
-  modular_server_.response().write(constants::state_duration_constant_string,gradient_info_.state_duration);
-  modular_server_.response().write(constants::concentration_constant_string,gradient_info_.concentration);
-
-  modular_server_.response().endObject();
+  writeGradientInfoToResponse();
 }
 
 void GradientController::startGradientHandler(modular_server::Pin * pin_ptr)
