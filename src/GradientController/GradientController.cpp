@@ -5,7 +5,7 @@
 // Authors:
 // Peter Polidoro peter@polidoro.io
 // ----------------------------------------------------------------------------
-#include "../GradientController.h"
+#include "GradientController.h"
 
 
 using namespace gradient_controller;
